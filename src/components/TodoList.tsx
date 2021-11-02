@@ -13,10 +13,22 @@ export const TodoList: React.FC<TodoListProps> = ({
   onToggle,
   onRemove,
 }) => {
+
+  if (todos.length === 0) {
+    return <p className="center">Пока дел нет</p>
+  }
+
+  const removeHandler = (event: React.MouseEvent, id: number) => {
+    event.preventDefault()
+
+    onRemove!(id)
+  }
+
   return (
     <ul>
       {todos.map(todo => {
         const classes = ['todo']
+
         if (todo.completed) {
           classes.push('completed')
         }
@@ -32,7 +44,7 @@ export const TodoList: React.FC<TodoListProps> = ({
               <span>{todo.title}</span>
               <i
                 className="material-icons red-text"
-                // onClick={() => onRemove?(todo.id)}
+                onClick={event => removeHandler(event, todo.id)}
               >
                 delete
               </i>

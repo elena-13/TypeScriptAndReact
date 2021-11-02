@@ -8,7 +8,9 @@ export const Navbar: React.FunctionComponent = () => (
         <li>
           <a href="/">Список дел</a>
         </li>
-        <li><a href="/">О нас</a></li>
+        <li>
+          <a href="/">О нас</a>
+        </li>
       </ul>
     </div>
   </nav>
